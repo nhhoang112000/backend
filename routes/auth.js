@@ -3,7 +3,7 @@ const router =express.Router()
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
 const User = require('../models/User')
-const bcrypt = require('../index').bcrypt
+const bcrypt = require('bcryptjs')
 // @route GET api/auth
 // @desc Check if user is logged in
 // @access Public
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 				.json({ success: false, message: 'Username already taken' })
 
 		// All good
-		const hashedPassword = await bcrypt.hash(password)
+		const hashedPassword = bcrypt.hashSync(password, 10)
 		const newUser = new User({ username, password: hashedPassword,role })
 		await newUser.save()
 
@@ -83,7 +83,7 @@ router.post('/login', async (req, res) => {
 				.json({ success: false, message: 'Incorrect username or password' })
 
 		// Username found
-		const passwordValid = await bcrypt.compare(user.password, password)
+		const passwordValid = bcrypt.compareSync(user.password, password)
 		if (!passwordValid)
 			return res
 				.status(400)
