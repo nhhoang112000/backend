@@ -1,10 +1,9 @@
 const express = require('express')
 const router =express.Router()
-const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
 const User = require('../models/User')
-
+const bcrypt = require('../index').bcrypt
 // @route GET api/auth
 // @desc Check if user is logged in
 // @access Public
