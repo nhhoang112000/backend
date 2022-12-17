@@ -6,8 +6,6 @@ const bodyParser = require("body-parser");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
 const courseRouter =  require("./routes/course");
-const bcrypt = require('bcrypt');
-module.exports.bcrypt = bcrypt;
 
 const connectDB = async () => {
   try {
