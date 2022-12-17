@@ -1,0 +1,54 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "hoang3",
+  "password": "hoang3",
+  "role":"LEARNER"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "hoang3",
+  "password": "hoang3"
+}
+
+###
+
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQxOGNlNWQwNDE5ZWM4ZWJkMzAzODYiLCJpYXQiOjE2NjUyNDQ5MTN9.BCDZCrE6iYJFYCWzaSaZyb4wHU57EEhG8Z-240SSZsU
+
+{
+  "title": "React1",
+  "content": "React1",
+  "image": "react3.com",
+  "like": "0"
+}
+
+###
+
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQxOGNlNWQwNDE5ZWM4ZWJkMzAzODYiLCJpYXQiOjE2NjU1MDYyNDZ9.sfiubMiBLwabj6_0u8iSE-GEKn-KxdDv3DGA95knZI0
+
+###
+
+PUT http://localhost:5000/api/posts/63428526b633886d99a5c331
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQxOGNlNWQwNDE5ZWM4ZWJkMzAzODYiLCJpYXQiOjE2NjUyNDQ5MTN9.BCDZCrE6iYJFYCWzaSaZyb4wHU57EEhG8Z-240SSZsU
+
+{
+  "title": "React22",
+  "content": "VUEEEEE",
+  
+  "like": "1"
+}
+
+###
+
+DELETE http://localhost:5000/api/posts/6341a2b896d40f7e785e1963
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQxOGNlNWQwNDE5ZWM4ZWJkMzAzODYiLCJpYXQiOjE2NjU1ODgwMjZ9._0YHgga-UqeBowf8US6HtC4K7OMdbk11ttq64S46yOo
