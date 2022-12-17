@@ -1,6 +1,6 @@
 const express = require('express')
 const router =express.Router()
-const argon2 = require('argon2')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
 const User = require('../models/User')
@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
 				.json({ success: false, message: 'Username already taken' })
 
 		// All good
-		const hashedPassword = await argon2.hash(password)
+		const hashedPassword = await bcrypt.hash(password)
 		const newUser = new User({ username, password: hashedPassword,role })
 		await newUser.save()
 
@@ -84,7 +84,7 @@ router.post('/login', async (req, res) => {
 				.json({ success: false, message: 'Incorrect username or password' })
 
 		// Username found
-		const passwordValid = await argon2.verify(user.password, password)
+		const passwordValid = await bcrypt.compare(user.password, password)
 		if (!passwordValid)
 			return res
 				.status(400)
