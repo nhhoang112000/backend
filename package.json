@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "blitz start --port ${PORT-3000}",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index",
     "build": "NODE_ENV=production blitz build && blitz prisma migrate deploy"
